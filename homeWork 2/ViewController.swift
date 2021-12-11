@@ -43,10 +43,10 @@ class ViewController: UIViewController {
         // в этом методе использовал sender т.к. не нашел как без него написать одну функцию для 3х слайдеров, чтобы не делать 3 отдельных экшна и не дублировать код в каждом
     }
     
-    func changeColor() {
+    private func changeColor() {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
 }
-    func move(slider: UISlider, chageNumber: UILabel) {
+    private func move(slider: UISlider, chageNumber: UILabel) {
         slider.value = round(100 * slider.value) / 100
         chageNumber.text = String(slider.value)
 }
