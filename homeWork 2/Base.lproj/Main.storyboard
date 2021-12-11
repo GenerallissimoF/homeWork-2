@@ -103,7 +103,8 @@
                                                     <constraint firstAttribute="width" constant="181" id="hSp-ri-Kq1"/>
                                                 </constraints>
                                                 <connections>
-                                                    <action selector="redSliderMove" destination="BYZ-38-t0r" eventType="valueChanged" id="TPb-S2-dJ2"/>
+                                                    <action selector="changeNumber:" destination="BYZ-38-t0r" eventType="valueChanged" id="Aty-MG-aCL"/>
+                                                    <action selector="colorSliderMove" destination="BYZ-38-t0r" eventType="valueChanged" id="TPb-S2-dJ2"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="DYd-YY-tV2">
@@ -114,7 +115,8 @@
                                                     <constraint firstAttribute="height" constant="29" id="kAc-wX-ypQ"/>
                                                 </constraints>
                                                 <connections>
-                                                    <action selector="greenSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="rVq-wg-U6b"/>
+                                                    <action selector="changeNumber:" destination="BYZ-38-t0r" eventType="valueChanged" id="UUc-9i-sF3"/>
+                                                    <action selector="colorSliderMove" destination="BYZ-38-t0r" eventType="valueChanged" id="lDY-fb-qnM"/>
                                                 </connections>
                                             </slider>
                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eOH-8M-VvT">
@@ -124,7 +126,8 @@
                                                     <constraint firstAttribute="width" constant="181" id="cJA-SJ-gbl"/>
                                                 </constraints>
                                                 <connections>
-                                                    <action selector="blueSliderAction" destination="BYZ-38-t0r" eventType="valueChanged" id="cbm-rk-zef"/>
+                                                    <action selector="changeNumber:" destination="BYZ-38-t0r" eventType="valueChanged" id="A8c-lN-ub9"/>
+                                                    <action selector="colorSliderMove" destination="BYZ-38-t0r" eventType="valueChanged" id="qZ5-pt-ADz"/>
                                                 </connections>
                                             </slider>
                                         </subviews>
