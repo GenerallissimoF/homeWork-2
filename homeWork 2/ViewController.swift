@@ -7,7 +7,9 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
+    
     @IBOutlet weak var colorView: UIView!
   
     @IBOutlet weak var redNumber: UILabel!
@@ -17,10 +19,18 @@ class ViewController: UIViewController {
     @IBOutlet weak var redSlider: UISlider!
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
+    
+    
+    var startVC: StartViewController!
+    var delegate: ViewControllerDelegate!
    
     override func viewDidLoad() {
         super.viewDidLoad()
         changeColor()
+        redNumber.text = String(redSlider.value)
+        greenNumber.text = String(greenSlider.value)
+        blueNumber.text = String(blueSlider.value)
+       
     }
     override func viewWillLayoutSubviews() {
         colorView.layer.cornerRadius = 10
@@ -28,9 +38,14 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func doneButtonPressd(_ sender: UIButton) {
+        delegate.changeColorOfView(color: colorView.backgroundColor!)
+        dismiss(animated: true)
+    }
+    
+    
     @IBAction func colorSliderMove() {
         changeColor()
-        // поставил сюда метод, чтобы первоначальный экран соответствовал первоначальной цветовой гаммме слайдеров, а не был белым по дефолту
     }
     
     
@@ -40,15 +55,16 @@ class ViewController: UIViewController {
         case greenSlider: move(slider: greenSlider, chageNumber: greenNumber)
         default: move(slider: blueSlider, chageNumber: blueNumber)
         }
-        // в этом методе использовал sender т.к. не нашел как без него написать одну функцию для 3х слайдеров, чтобы не делать 3 отдельных экшна и не дублировать код в каждом
+       
     }
     
-    private func changeColor() {
+    func changeColor() {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
 }
     private func move(slider: UISlider, chageNumber: UILabel) {
         slider.value = round(100 * slider.value) / 100
         chageNumber.text = String(slider.value)
+        
 }
     
 }

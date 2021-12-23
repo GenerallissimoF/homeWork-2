@@ -13,6 +13,7 @@
 		1D0670A82763E027002F86E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0670A62763E027002F86E9 /* Main.storyboard */; };
 		1D0670AA2763E028002F86E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D0670A92763E028002F86E9 /* Assets.xcassets */; };
 		1D0670AD2763E028002F86E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1D0670AB2763E028002F86E9 /* LaunchScreen.storyboard */; };
+		1DBD89892775088000DE8547 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DBD89882775088000DE8547 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1D0670A92763E028002F86E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D0670AC2763E028002F86E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1D0670AE2763E028002F86E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DBD89882775088000DE8547 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 			children = (
 				1D0670A02763E027002F86E9 /* AppDelegate.swift */,
 				1D0670A22763E027002F86E9 /* SceneDelegate.swift */,
+				1DBD89882775088000DE8547 /* StartViewController.swift */,
 				1D0670A42763E027002F86E9 /* ViewController.swift */,
 				1D0670A62763E027002F86E9 /* Main.storyboard */,
 				1D0670A92763E028002F86E9 /* Assets.xcassets */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1D0670A52763E027002F86E9 /* ViewController.swift in Sources */,
+				1DBD89892775088000DE8547 /* StartViewController.swift in Sources */,
 				1D0670A12763E027002F86E9 /* AppDelegate.swift in Sources */,
 				1D0670A32763E027002F86E9 /* SceneDelegate.swift in Sources */,
 			);
