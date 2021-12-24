@@ -14,7 +14,7 @@ protocol ViewControllerDelegate {
 
 class StartViewController: UIViewController {
    
-    var viewCon: StartViewController!
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         
