@@ -20,11 +20,19 @@ class StartViewController: UIViewController {
         
         }
     
-   
+    @IBAction func nextButtonPressed(_ sender: UIButton) {
+        
+        let viewcontrollerVC = storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        viewcontrollerVC.delegate = self
+        present(viewcontrollerVC, animated: true, completion: nil)
+        viewcontrollerVC.colorView.backgroundColor = self.view.backgroundColor
+    }
+    
 }
 
 extension StartViewController: ViewControllerDelegate {
     func changeColorOfView(color: UIColor) {
         self.view.backgroundColor = color
+        
     }
 }

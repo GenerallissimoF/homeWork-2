@@ -34,8 +34,9 @@ class ViewController: UIViewController {
     }
     override func viewWillLayoutSubviews() {
         colorView.layer.cornerRadius = 10
-
+    
     }
+    
     
     
     @IBAction func doneButtonPressd(_ sender: UIButton) {
