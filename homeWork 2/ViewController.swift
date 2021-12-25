@@ -41,13 +41,13 @@ class ViewController: UIViewController {
     
     @IBAction func doneButtonPressd(_ sender: UIButton) {
         delegate.changeColorOfView(color: colorView.backgroundColor!)
-        dismiss(animated: true)
+        self.dismiss(animated: true)
     }
     
     
     @IBAction func colorSliderMove() {
-        changeColor()
-    }
+    changeColor()
+   }
     
     
     @IBAction func changeNumber(_ sender: UISlider) {
@@ -56,8 +56,9 @@ class ViewController: UIViewController {
         case greenSlider: move(slider: greenSlider, chageNumber: greenNumber)
         default: move(slider: blueSlider, chageNumber: blueNumber)
         }
-       
     }
+    
+    @IBAction override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {}
     
     func changeColor() {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
