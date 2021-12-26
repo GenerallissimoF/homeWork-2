@@ -20,11 +20,10 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
     
-    
     @IBOutlet weak var redTextField: UITextField!
     @IBOutlet weak var greenTextField: UITextField!
     @IBOutlet weak var blueTextField: UITextField!
-   
+
     var startVC: StartViewController!
     var delegate: ViewControllerDelegate!
    
@@ -38,14 +37,19 @@ class ViewController: UIViewController, UITextFieldDelegate {
         blueNumber.text = String(blueSlider.value)
         configureTextFields()
         
-        
-        
+        redTextField.addToolBar()
+        greenTextField.addToolBar()
+        blueTextField.addToolBar()
     }
+    
     override func viewWillLayoutSubviews() {
         colorView.layer.cornerRadius = 10
     
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+            view.endEditing(true)
+        super .touchesBegan(touches, with: event)
+    }
     
     
     @IBAction func doneButtonPressd(_ sender: UIButton) {
@@ -53,11 +57,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true)
     }
     
-    
     @IBAction func colorSliderMove() {
     changeColor()
    }
-    
     
     @IBAction func changeNumber(_ sender: UISlider) {
         switch sender {
@@ -71,7 +73,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                       chageNumberLab: blueNumber,
                       changeNumberTF: blueTextField)
         }
-        
     }
     
     @IBAction override func unwind(for unwindSegue: UIStoryboardSegue, towards subsequentVC: UIViewController) {}
@@ -80,7 +81,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         colorView.backgroundColor = UIColor(red: CGFloat(redSlider.value), green: CGFloat(greenSlider.value), blue: CGFloat(blueSlider.value), alpha: 1)
 }
    
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////
     func textFieldDidEndEditing(_ textField: UITextField) {
         switch textField {
         case redTextField: checkValuesOf(textField: redTextField,
@@ -92,27 +92,25 @@ class ViewController: UIViewController, UITextFieldDelegate {
         default:  checkValuesOf(textField: blueTextField,
                                 numberLabel: blueNumber,
                                 slider: blueSlider)
-        
         }
         
         
     }
     
-        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-            let currentText = textField.text ?? ""
-            guard let stringRange = Range(range, in: currentText) else { return false }
-            let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
-            return updatedText.count <= 4
-        }
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = textField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+        return updatedText.count <= 4
+    }
     
     
     private func move(slider: UISlider, chageNumberLab: UILabel, changeNumberTF: UITextField) {
         slider.value = round(100 * slider.value) / 100
         chageNumberLab.text = String(slider.value)
         changeNumberTF.text = String(slider.value)
-        
-        
-}
+    }
+    
     private func configureTextFields () {
         redTextField.delegate = self
         greenTextField.delegate = self
@@ -121,7 +119,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         greenTextField.text = greenNumber.text
         blueTextField.text = blueNumber.text
         
-    }
+    }// не успел сделать проверку на цифровой диапозон от 0.0 до 1.0
     private func checkValuesOf(textField: UITextField, numberLabel: UILabel, slider: UISlider) {
         if let _ = Float(textField.text ?? "") {
             numberLabel.text = textField.text
@@ -135,11 +133,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let alertButton = UIAlertAction.init(title: "ok", style: .default, handler: nil)
            alert.addAction(alertButton)
            present(alert, animated: true, completion: nil)
-            
         }
     }
     
-  
+}
+extension UITextField {
     
+    func addToolBar() {
+        let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 44))
+        let doneButton = UIBarButtonItem(title: "Done", style: .done, target: self, action: #selector(self.doneClicked))
+        let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolBar.setItems([flexibleSpace, doneButton], animated: true)
+        self.inputAccessoryView = toolBar
+        
+    }
+    @objc func doneClicked() {
+        self.endEditing(true)
+    }
 }
 

@@ -14,8 +14,6 @@ protocol ViewControllerDelegate {
 
 class StartViewController: UIViewController {
    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,14 +26,12 @@ class StartViewController: UIViewController {
         present(viewcontrollerVC, animated: true, completion: nil)
 
         viewcontrollerVC.colorView.backgroundColor = self.view.backgroundColor
+        
         updateBackSliderValueFor(viewCont: viewcontrollerVC)
         updateNumbersLabelsFor(viewCont: viewcontrollerVC)
         updateNumbersTextFieldsFor(viewCont: viewcontrollerVC)
     }
     
-    func colorToRGB(uiColor: UIColor) -> CIColor {
-        CIColor(color: uiColor)
-}
     func updateBackSliderValueFor(viewCont: ViewController) {
         let newColorFormat = colorToRGB(uiColor: self.view.backgroundColor!)
         viewCont.redSlider.value = Float(newColorFormat.red)
@@ -43,24 +39,24 @@ class StartViewController: UIViewController {
         viewCont.blueSlider.value = Float(newColorFormat.blue)
     }
     
-    
     func updateNumbersLabelsFor(viewCont: ViewController) {
         viewCont.redNumber.text = String(viewCont.redSlider.value)
         viewCont.greenNumber.text = String(viewCont.greenSlider.value)
         viewCont.blueNumber.text = String(viewCont.blueSlider.value)
     }
+    
     func updateNumbersTextFieldsFor(viewCont: ViewController) {
         viewCont.redTextField.text = viewCont.redNumber.text
         viewCont.greenTextField.text = viewCont.greenNumber.text
         viewCont.blueTextField.text = viewCont.blueNumber.text
     }
-
+    
+    private func colorToRGB(uiColor: UIColor) -> CIColor {
+        CIColor(color: uiColor)
+    }
 }
 
-
-
-
-    extension StartViewController: ViewControllerDelegate {
+extension StartViewController: ViewControllerDelegate {
     func changeColorOfView(color: UIColor) {
         self.view.backgroundColor = color
         
