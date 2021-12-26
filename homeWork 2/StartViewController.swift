@@ -30,7 +30,7 @@ class StartViewController: UIViewController {
         viewcontrollerVC.colorView.backgroundColor = self.view.backgroundColor
         updateBackSliderValueFor(viewCont: viewcontrollerVC)
         updateNumbersLabelsFor(viewCont: viewcontrollerVC)
-        
+        updateNumbersTextFieldsFor(viewCont: viewcontrollerVC)
     }
     
     func colorToRGB(uiColor: UIColor) -> CIColor {
@@ -48,6 +48,11 @@ class StartViewController: UIViewController {
         viewCont.redNumber.text = String(viewCont.redSlider.value)
         viewCont.greenNumber.text = String(viewCont.greenSlider.value)
         viewCont.blueNumber.text = String(viewCont.blueSlider.value)
+    }
+    func updateNumbersTextFieldsFor(viewCont: ViewController) {
+        viewCont.redTextField.text = viewCont.redNumber.text
+        viewCont.greenTextField.text = viewCont.greenNumber.text
+        viewCont.blueTextField.text = viewCont.blueNumber.text
     }
 
 }
